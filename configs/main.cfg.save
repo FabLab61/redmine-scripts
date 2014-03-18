@@ -1,0 +1,28 @@
+ABSOLUTE_PATH_TO_WWW="/var/www/serikov/data/www"
+BACKUP_DIR="/var/www/serikov/data/www/backups"
+PATH_TO_MIRROR="/var/www/serikov/data/www/redmine-repos/redmine.git"
+PATH_TO_WWW_BETA="/var/www/serikov/data/www/beta.redmine.fablab61.ru/redmine161"
+PATH_TO_WWW_MASTER="/var/www/serikov/data/www/redmine.fablab61.ru"
+PATH_TO_SCRIPT_FOLDER=$(cd .. && pwd)
+
+DOMAIN="fablab61.ru"
+DEPLOY_OLD_VERSION_SUBDOMAIN="old.redmine"
+DEPLOY_NEW_VERSION_SUBDOMAIN="new.redmine"
+
+REDMINE_MASTER_DB="ru_fablab61_redmine"
+REDMINE_BETA_DB="ru_fablab61_redmine_beta"
+
+DB_OLD_V="redmine_old"
+DB_NEW_V="redmine_new"
+
+REDMINE_MYSQL_SUPERUSER="redmine_sudo"
+REDMINE_SUPERUSER_PASSWORD="cuum8n7tLMFayyqn"
+
+MUSER="test"
+MPASS="0000"
+MHOST="localhost"
+
+
+MYSQL=$(which mysql)
+AWK=$(which awk)
+GREP=$(which grep)

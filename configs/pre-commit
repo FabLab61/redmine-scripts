@@ -1,0 +1,7 @@
+#!/bin/bash
+echo -e "Executing pre-commit script"
+cd db
+./get_schema.pl ../config/database.yml
+cd ..
+git add meta.txt
+
