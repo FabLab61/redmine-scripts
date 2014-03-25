@@ -1,5 +1,6 @@
-configs/password
+configs/database.production.yml
+configs/database.test.yml
+configs/database.beta.yml
 logs
-!logs/
 *.sh~
 *.pl~

@@ -11,6 +11,7 @@ MYSQL_LOGIN_STRING="mysql -u $BETA_USER -p$BETA_PASSWORD -h $BETA_HOST"
 
 echo -e "Cleaning beta database"
 TABLES=$(eval $MYSQL_LOGIN_STRING "-e 'use $BETA_DB; show tables;'" | awk '{ print $1}' | grep -v '^Tables' )
+
 for t in $TABLES
 do
 echo "Deleting $t table from $BETA_DB database..."

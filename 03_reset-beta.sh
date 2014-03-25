@@ -11,41 +11,56 @@ git init
 git remote add main $PATH_TO_WWW_MASTER
 git pull main master --tags
 git remote rm main
-echo "Git remote are clean"
+LAST_VERSION=$(git tag | tail -n 1)
+# echo "Git remote are clean"
 git remote -v
+
 
 git log --oneline --decorate --color | grep "tagged version"
 LAST_TAGGED_COMMIT=$(git log --oneline | grep "tagged" | grep -o -E "([0-9a-f]{5,40})")
 echo "SHA-1 of last tagged commit is " $LAST_TAGGED_COMMIT
 
 
-# Restore original version tags if forget
+git branch -m master develop_$LAST_VERSION
+
+# # git checkout -b develop_$LAST_VERSION
+# A=$(git log --oneline --color -n 2)
+
+# # Restore original version tags if forget
 git remote add mirror /var/www/serikov/data/www/redmine-repos/redmine.git
-git fetch --tags mirror
-LAST_VERSION=$(git tag | tail -n 1)		#maybe be older
-#LAST_VERSION=$(git describe --tags)
-echo "Latest tagged version is : " $LAST_VERSION
+git fetch mirror 
+got branch -a
+git branch master remotes/mirror/master
 
-git checkout -b develop_$LAST_VERSION
-A=$(git log --oneline --color -n 2)
-git checkout master
-git commit -am "Checkout to master for merge from mirror"
 
-#git reset --hard $LAST_TAGGED_COMMIT
-#git checkout $LAST_TAGGED_COMMIT		# remove all user commits from master
-#git checkout LAST_VERSION				# same as checkout to commit
+# git fetch --tags mirror
+# # LAST_VERSION=$(git tag | tail -n 1)		#maybe be older
+# #LAST_VERSION=$(git describe --tags)
+# echo "Latest tagged version is : " $LAST_VERSION
 
-B=$(git log --oneline --color -n 2)
-git pull mirror master --tags
-C=$(git log --oneline --color -n 2)
-git branch
 
-echo -e "### 1) Latest commits from develop branch : " 
-echo -e $A
-echo -e "### 2) Latest master commit BEFORE upgrade commit history from mirror and AFTER checkout to last tag: "
-echo -e $B
-echo -e "### 3) Latest master commit AFTER upgrade commit history from mirror : "
-echo -e $C
+
+# # git checkout master
+# # git checkout $LAST_VERSION
+# # git 
+
+# # git commit -am "Checkout to master for merge from mirror"
+
+# #git reset --hard $LAST_TAGGED_COMMIT
+# #git checkout $LAST_TAGGED_COMMIT		# remove all user commits from master
+# #git checkout LAST_VERSION				# same as checkout to commit
+
+# B=$(git log --oneline --color -n 2)
+# git pull mirror master --tags
+# C=$(git log --oneline --color -n 2)
+# git branch
+
+# echo -e "### 1) Latest commits from develop branch : " 
+# echo -e $A
+# echo -e "### 2) Latest master commit BEFORE upgrade commit history from mirror and AFTER checkout to last tag: "
+# echo -e $B
+# echo -e "### 3) Latest master commit AFTER upgrade commit history from mirror : "
+# echo -e $C
 
 git checkout develop_$LAST_VERSION
 echo -e "Checking OLD database.yml"

@@ -2,6 +2,7 @@
 echo -e "Executing pre-commit script"
 cd db
 ./get_schema.pl ../config/database.yml
+./calc_plugin_migration.sh
 cd ..
 git add meta.txt
 

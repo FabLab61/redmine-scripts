@@ -19,11 +19,13 @@ touch logs/replica.txt
 cd logs
 chmod 777 *
 
-cp $PATH_TO_SCRIPT_FOLDER/perl/db_schema_vcs.pl  $PATH_TO_WWW_BETA/db/get_schema.pl
+cp $PATH_TO_SCRIPT_FOLDER/pre_plugin_migration.sh  $PATH_TO_WWW_BETA/pre_plugin_migration.sh
+
+cp $PATH_TO_SCRIPT_FOLDER/perl/get_schema.pl  $PATH_TO_WWW_BETA/db/get_schema.pl
 chmod +x $PATH_TO_WWW_BETA/db/get_schema.pl
 
-cp $PATH_TO_SCRIPT_FOLDER/calculate_plugin_migration.sh  $PATH_TO_WWW_BETA/db/calculate_plugin_migration.sh
-chmod +x $PATH_TO_WWW_BETA/db/calculate_plugin_migration.sh
+cp $PATH_TO_SCRIPT_FOLDER/calc_plugin_migration.sh  $PATH_TO_WWW_BETA/db/calc_plugin_migration.sh
+chmod +x $PATH_TO_WWW_BETA/db/calc_plugin_migration.sh
 
 cp $PATH_TO_SCRIPT_FOLDER/configs/pre-commit $PATH_TO_WWW_BETA/.git/hooks/pre-commit
 chmod 777 $PATH_TO_WWW_BETA/.git/hooks/pre-commit

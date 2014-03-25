@@ -1,2 +1,0 @@
-2014.03.19 01:00 New backup: redmine-master_20140319_010004.data.sql & redmine-master_20140319_010004.schema.sql & redmine-master_20140319_010004.txt
-2014.03.19 02:00 New backup: redmine-master_20140319_020003.data.sql & redmine-master_20140319_020003.schema.sql & redmine-master_20140319_020003.txt
